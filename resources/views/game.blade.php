@@ -14,33 +14,30 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-custom">
         <div class="container-fluid ">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="barzelletta">Barzella</a>
-                      </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/i-nostri-giochi">I Nostri Giochi</a>
-                    </li>
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{route('Home')}}">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{route('drwho')}}">Chi siamo</a>
+                </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{route('game')}}">I Nostri Giochi</a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
         </div>
-    </nav>
+      </nav>
     {{-- @dd($game) --}}
 
     <div class="container-fluid bg-black vh-100">
@@ -51,17 +48,18 @@
 
         </div>
         <div class="row justify-content-center align-items-center text-center">
-            @foreach ($games as $game)
+            @foreach ($games as $el)
+            {{-- @dump($el) --}}
            <div class="col-12 col-md-3">
             <div class="card" style="width: 18rem;">
-                <img src="{{$game['img']}}" class="card-img-top" alt="...">
+                <img src="{{$el['img']}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">{{$game['name']}}</h5>
+                  <h5 class="card-title">{{$el['name']}}</h5>
                   <p class="card-text">
-                    <h4>Tipologia gioco:</h4> {{$game['gametype']}} <br>
-                    <h4>Numero di giocatori:</h4>{{$game['players']}}
+                    <h4>Tipologia gioco:</h4> {{$el['gametype']}} <br>
+                    <h4>Numero di giocatori:</h4>{{$el['players']}}
                   </p>
-                  {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+                  <a href="{{route('gamedetail',['id'=>$el['id']])}}" class="btn btn-primary">Dettaglio gioco</a>
                 </div>
               </div>
            </div>

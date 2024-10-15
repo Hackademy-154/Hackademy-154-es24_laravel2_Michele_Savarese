@@ -21,17 +21,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" aria-current="page" href="{{route('Home')}}">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="barzelletta">Barzella</a>
+            <a class="nav-link" href="{{route('drwho')}}">Chi siamo</a>
           </li>
         <li class="nav-item">
-            <a class="nav-link" href="i-nostri-giochi">I Nostri Giochi</a>
+            <a class="nav-link" href="{{route('game')}}">I Nostri Giochi</a>
           </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
+
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
