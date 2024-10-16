@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Es23-Michele Savarese</title>
-<!-- CDN BOOTSTRAP -->
+    <!-- CDN BOOTSTRAP -->
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<!-- CSS -->
-<link rel="stylesheet" href="/style.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/style.css">
 
 </head>
 <body>
@@ -32,6 +32,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('teacherIndex')}}">I nostri docenti</a>
                   </li>
+
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -40,24 +41,35 @@
           </div>
         </div>
       </nav>
+    {{-- @dd($game) --}}
 
+    <div class="container-fluid bg-black vh-100">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12">
+                <h1 class="text-white text-center display-4">I Nostri Istruttori</h1>
+            </div>
 
-<div class="container-fluid bg-black vh-100">
-    <div class="row justify-content-center align-items-center">
-        <div class="col-12">
-<h1 class="text-white text-center display-4">questa è la pagina1, <br>
-     un treno è andato sotto un treno, ha trovato dei binari <br>
-
-
-    Un cane vede un cane che sta scavando un fosso per metterci un osso:
-    Ca ne trovi già 3 dei miei. <br>
-
-{{$title}}</h1>
+        </div>
+        <div class="row justify-content-center align-items-center text-center">
+            @foreach ($teachers as $teacher)
+           <div class="col-12 col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img src="{{$teacher['img']}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{$teacher['name']}}</h5>
+                  <p class="card-text">
+                    <h4>Tipologia gioco:</h4> {{$teacher['gametype']}} <br>
+                    <h4>Gioco preferito:</h4>{{$teacher['game']}}
+                  </p>
+                  <a href="{{route('teacherDetail',['id'=>$teacher['id']])}}" class="btn btn-primary">Dettaglio docente</a>
+                </div>
+              </div>
+           </div>
+            @endforeach
         </div>
     </div>
-</div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
